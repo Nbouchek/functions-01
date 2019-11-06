@@ -1,19 +1,17 @@
 const startGameBtn = document.getElementById('start-game-btn');
+const ROCK = 'ROCK';
+const PAPER = 'PAPER';
+const SCISSORS = 'SCISSORS';
 
-let start = function(x) {
-  alert(x);
-  alert('Game is starting ... ');
+const getPlayerChoice = function() {
+  const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
+  if (
+    selection !== ROCK &&
+    selection !== PAPER &&
+    selection !== SCISSORS
+  ) {
+    alert('Invalid choice, we chose Rock for you!');
+  }
 };
 
-// const person = {
-//   greet: function greet() {
-//     console.log('Hello there!!');
-//   }
-// };
-// person.greet();
-// console.dir(startGame);
-let input = 'Nacer';
-startGameBtn.addEventListener('click', function() {
-  start(input);
-});
-
+startGameBtn.addEventListener('click', getPlayerChoice);
