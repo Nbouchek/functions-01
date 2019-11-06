@@ -10,5 +10,5 @@ function startGame() {
 //   }
 // };
 // person.greet();
-console.log(typeof startGame);
+console.dir(startGame);
 startGameBtn.addEventListener('click', startGame);
