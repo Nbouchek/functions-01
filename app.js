@@ -4,4 +4,4 @@ function startGame() {
   alert('Game is starting ...');
 }
 
-startGame();
+startGameBtn.addEventListener('click', startGame);
