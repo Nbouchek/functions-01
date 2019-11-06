@@ -1,7 +1,7 @@
 const startGameBtn = document.getElementById('start-game-btn');
 
-const start = function startGame() {
-  alert('Game is starting ...');
+const start = function () {
+  alert('Game is starting ... f');
 };
 
 // const person = {
