@@ -32,6 +32,11 @@ const getComputerChoice = function() {
   }
 };
 
+const startGame = () => {
+  gameIsRunning = false;
+  console.log('Game is starting ...');
+};
+
 const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
   cChoice === pChoice
     ? RESULT_DRAW
@@ -45,8 +50,8 @@ startGameBtn.addEventListener('click', function() {
   if (gameIsRunning) {
     return;
   }
-  gameIsRunning = true;
-  console.log('Game is starting ...');
+
+  startGame();
 
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
@@ -54,7 +59,7 @@ startGameBtn.addEventListener('click', function() {
   if (playerChoice) {
     winner = getWinner(computerChoice, playerChoice);
   } else {
-    winner = getComputerChoice(computerChoice);
+    winner = getWinner(computerChoice);
   }
 
   let message = `You picked ${playerChoice ||
@@ -67,8 +72,20 @@ startGameBtn.addEventListener('click', function() {
     message = message + `lost.`;
   }
   alert(message);
-  gameIsRunning = false;
+  startGame();
   console.log('playerChoice: ' + playerChoice);
   console.log('computerChoice:  ' + (computerChoice || DEFAULT_USER_CHOICE));
   console.log('result: ' + winner);
 });
+
+// not related to the game
+const sumUp = (...numbers) => {
+  let sum = 0;
+  for (const num of numbers) {
+    sum += num;
+  }
+
+  return sum;
+};
+
+console.log(sumUp(12, 3,5));
