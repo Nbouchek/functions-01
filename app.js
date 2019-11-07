@@ -84,7 +84,7 @@ startGameBtn.addEventListener('click', function() {
 });
 
 // not related to the game
-const sumUp = (...numbers) => {
+const sumUp = (resultHandler, ...numbers) => {
   const validatNumber = number => {
       return isNaN(number)? 0 : number;
   };
@@ -94,7 +94,7 @@ const sumUp = (...numbers) => {
     sum += validatNumber(num);
   }
 
-  return sum;
+  resultHandler(sum);
 };
 
 const subtractUp = function() {
@@ -105,6 +105,10 @@ const subtractUp = function() {
   return sum;
 };
 
-console.log(sumUp(12, 'rer', 3, 5));
+const showResult = (result) => {
+    alert(`The result after adding all the numbers is:  ${result}`);
+};
+
+sumUp(showResult, 12, 'rer', 3, -5);
 
 console.log(subtractUp(12, 3, 5));
