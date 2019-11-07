@@ -88,4 +88,14 @@ const sumUp = (...numbers) => {
   return sum;
 };
 
-console.log(sumUp(12, 3,5));
+const subtractUp = function() {
+  let sum = 0;
+  for (const num of arguments) {
+    sum -= num;
+  }
+  return sum;
+};
+
+console.log(sumUp(12, 3, 5));
+
+console.log(subtractUp(12, 3, 5));
