@@ -16,7 +16,7 @@ const getPlayerChoice = function() {
   ).toUpperCase();
   if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
     alert(`Invalid choice, we chose ${DEFAULT_USER_CHOICE} for you!`);
-    return DEFAULT_USER_CHOICE;
+    return;
   }
   return selection;
 };
@@ -32,7 +32,7 @@ const getComputerChoice = function() {
   }
 };
 
-const getWinner = (cChoice, pChoice) =>
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
   cChoice === pChoice
     ? RESULT_DRAW
     : (cChoice === ROCK && pChoice === PAPER) ||
@@ -47,11 +47,18 @@ startGameBtn.addEventListener('click', function() {
   }
   gameIsRunning = true;
   console.log('Game is starting ...');
+
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
-  const winner = getWinner(computerChoice, playerChoice);
+  let winner;
+  if (playerChoice) {
+    winner = getWinner(computerChoice, playerChoice);
+  } else {
+    winner = getComputerChoice(computerChoice);
+  }
 
-  let message = `You picked ${playerChoice}, computerpicked ${computerChoice}, therefore you `;
+  let message = `You picked ${playerChoice ||
+    DEFAULT_USER_CHOICE}, computerpicked ${computerChoice}, therefore you `;
   if (winner === RESULT_DRAW) {
     message = message + `you had a draw`;
   } else if (winner === RESULT_PLAYER_WINS) {
@@ -61,7 +68,10 @@ startGameBtn.addEventListener('click', function() {
   }
   alert(message);
   gameIsRunning = false;
-  console.log('playerSelection: ' + playerChoice);
-  console.log('computerChoice:  ' + computerChoice);
+  console.log(
+    'playerSelection: ' + playerChoice ? playerChoice : DEFAULT_USER_CHOICE
+  );
+  console.log('computerChoice:  ' + playerChoice ||
+  DEFAULT_USER_CHOICE);
   console.log('winner: ' + winner);
 });
