@@ -12,8 +12,13 @@ let gameIsRunning = false;
 const getPlayerChoice = function() {
   const selection = prompt(
     `${ROCK}, ${PAPER} or ${SCISSORS}?`,
-    ''
-  ).toUpperCase();
+    'Enter your name here'
+  );
+
+  if (selection !== null) {
+    selction.toUpperCase();
+  }
+  
   if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
     alert(`Invalid choice, we chose ${DEFAULT_USER_CHOICE} for you!`);
     return DEFAULT_USER_CHOICE;
@@ -80,6 +85,8 @@ startGameBtn.addEventListener('click', function() {
 
 // not related to the game
 const sumUp = (...numbers) => {
+  const validatNumber = number => {};
+
   let sum = 0;
   for (const num of numbers) {
     sum += num;
