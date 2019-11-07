@@ -47,11 +47,21 @@ startGameBtn.addEventListener('click', function() {
   }
   gameIsRunning = true;
   console.log('Game is starting ...');
-  const playerSelection = getPlayerChoice();
+  const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
-  const winner = getWinner(computerChoice, playerSelection);
-  console.log('playerSelection: ' + playerSelection);
+  const winner = getWinner(computerChoice, playerChoice);
+
+  let message = `You picked ${playerChoice}, computerpicked ${computerChoice}, therefore you `;
+  if (winner === RESULT_DRAW) {
+    message = message + `you had a draw`;
+  } else if (winner === RESULT_PLAYER_WINS) {
+    message = message + `won.`;
+  } else {
+    message = message + `lost.`;
+  }
+  alert(message);
+  gameIsRunning = false;
+  console.log('playerSelection: ' + playerChoice);
   console.log('computerChoice:  ' + computerChoice);
-  console.log(winner);
-  console.log('Game ended!');
+  console.log('winner: ' + winner);
 });
