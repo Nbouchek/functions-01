@@ -16,7 +16,7 @@ const getPlayerChoice = function() {
   ).toUpperCase();
   if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
     alert(`Invalid choice, we chose ${DEFAULT_USER_CHOICE} for you!`);
-    return;
+    return DEFAULT_USER_CHOICE;
   }
   return selection;
 };
@@ -68,10 +68,7 @@ startGameBtn.addEventListener('click', function() {
   }
   alert(message);
   gameIsRunning = false;
-  console.log(
-    'playerSelection: ' + playerChoice ? playerChoice : DEFAULT_USER_CHOICE
-  );
-  console.log('computerChoice:  ' + playerChoice ||
-  DEFAULT_USER_CHOICE);
-  console.log('winner: ' + winner);
+  console.log('playerChoice: ' + playerChoice);
+  console.log('computerChoice:  ' + (computerChoice || DEFAULT_USER_CHOICE));
+  console.log('result: ' + winner);
 });
