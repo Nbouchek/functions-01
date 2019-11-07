@@ -16,9 +16,9 @@ const getPlayerChoice = function() {
   );
 
   if (selection !== null) {
-    selction.toUpperCase();
+    selection.toUpperCase();
   }
-  
+
   if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
     alert(`Invalid choice, we chose ${DEFAULT_USER_CHOICE} for you!`);
     return DEFAULT_USER_CHOICE;
@@ -85,11 +85,13 @@ startGameBtn.addEventListener('click', function() {
 
 // not related to the game
 const sumUp = (...numbers) => {
-  const validatNumber = number => {};
+  const validatNumber = number => {
+      return isNaN(number)? 0 : number;
+  };
 
   let sum = 0;
   for (const num of numbers) {
-    sum += num;
+    sum += validatNumber(num);
   }
 
   return sum;
@@ -103,6 +105,6 @@ const subtractUp = function() {
   return sum;
 };
 
-console.log(sumUp(12, 3, 5));
+console.log(sumUp(12, 'rer', 3, 5));
 
 console.log(subtractUp(12, 3, 5));
