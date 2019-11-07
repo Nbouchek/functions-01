@@ -94,6 +94,7 @@ const sumUp = (resultHandler, ...numbers) => {
     sum += validatNumber(num);
   }
 
+  // callback
   resultHandler(sum);
 };
 
